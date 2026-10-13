@@ -1,32 +1,30 @@
 # AMATH 301 RAY ZHOU
 import numpy as np
 
-x = np.linspace(0, 1, 5) * np.pi
-A1 = np.copy(x)
+x = np.linspace(0, np.pi, 5)
+A1 = x.copy()
 
-u = np.cos(np.arange(0,399,0.5))
-# u = np.arange(0,399,0.5)
-A2 = np.copy(u)
+u = np.cos(np.arange(0,399.5,0.5))
+# u = np.arange(0,399.5,0.5)
+A2 = u.copy()
 
 A3 = u[421]
 
 A4 = u[-3]
 
-u1 = u
-u1[28] = 4
-A5 = np.copy(u1)
+A5 = u.copy()
+A5[28] = 4
 
-u2 = u[-400:]
-A6 = np.copy(u2)
+A6 = u[-400:].copy()
 
 v = np.flip(u)
-A7 = np.copy(v)
+A7 = v.copy()
 
-w = np.copy(u)
+w = u.copy()
 w[1::2] = v[1::2]
-A8 = np.copy(w)
+A8 = w.copy()
 
 y = np.sin(u) / (v**2 + 1)
-A9 = np.copy(y)
+A9 = y.copy()
 
 
