@@ -27,19 +27,19 @@ import numpy as np
 # y = np.sin(u) / (v**2 + 1)
 # A9 = y.copy()
 
-temps = np.array([[52, 61, 47],
-                  [54, 63, 49],
-                  [49, 58, 44],
-                  [51, 60, 46]])
-A10 = temps.copy()
+# temps = np.array([[52, 61, 47],
+#                   [54, 63, 49],
+#                   [49, 58, 44],
+#                   [51, 60, 46]])
+# A10 = temps.copy()
 
-A11 = temps[2, 1]
+# A11 = temps[2, 1]
 
-A12 = temps[0, 2]
+# A12 = temps[0, 2]
 
-A13 = temps[:, :2].copy()
+# A13 = temps[:, :2].copy()
 
-A14 = temps[2,:].copy()
+# A14 = temps[2,:].copy()
 
 
 a = np.linspace(0, 1, 19)
@@ -52,6 +52,12 @@ a_big = a[a_bool]
 A17 = a_big.copy()
 
 x = np.linspace(-6,6,31)
+A18 = x[np.sin(x) < 0.5].copy()
 
+h = np.linspace(0, 10, 400)
+T = 15 - 6.5 * h
+A19 = h[T > 0].copy()
 
+P = 101325 * (1 - 0.0225577 * h)**5.25588
+A20 = P[T < 0].copy()
 
