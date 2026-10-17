@@ -35,3 +35,21 @@ A10 = temps.copy()
 
 A11 = temps[2, 1]
 
+A12 = temps[0, 2]
+
+A13 = temps[:, :2].copy()
+
+A14 = temps[2.:].copy()
+
+
+a = np.linspace(0, 1, 19)
+A15 = a.copy()
+
+a_bool = (a > 0.3)
+A16 = a_bool.copy()
+
+a_big = a[a_bool]
+A17 = a_big.copy()
+
+x = np.linspace[-6,6,31]
+
