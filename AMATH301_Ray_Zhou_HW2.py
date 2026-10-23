@@ -42,22 +42,22 @@ import numpy as np
 # A14 = temps[2,:].copy()
 
 
-a = np.linspace(0, 1, 19)
-A15 = a.copy()
+# a = np.linspace(0, 1, 19)
+# A15 = a.copy()
 
-a_bool = (a > 0.3)
-A16 = a_bool.copy()
+# a_bool = (a > 0.3)
+# A16 = a_bool.copy()
 
-a_big = a[a_bool]
-A17 = a_big.copy()
+# a_big = a[a_bool]
+# A17 = a_big.copy()
 
-x = np.linspace(-6,6,31)
-A18 = x[np.sin(x) < 0.5].copy()
+# x = np.linspace(-6,6,31)
+# A18 = x[np.sin(x) < 0.5].copy()
 
-h = np.linspace(0, 10, 400)
-T = 15 - 6.5 * h
-A19 = h[T > 0].copy()
+# h = np.linspace(0, 10, 400)
+# T = 15 - 6.5 * h
+# A19 = h[T > 0].copy()
 
-P = 101325 * (1 - 0.0225577 * h)**5.25588
-A20 = P[T < 0].copy()
+# P = 101325 * (1 - 0.0225577 * h)**5.25588
+# A20 = P[T < 0].copy()
 
