@@ -15,10 +15,10 @@ import scipy as scp
 # z = (x2 - A3) / A4
 # A5 = z.copy()
 
-# def calculate_statistics(arr):
-#     mean = arr.mean()
-#     std = arr.std()
-#     return mean, std
+def calculate_statistics(arr):
+    mean = arr.mean()
+    std = np.sqrt(np.sum((arr - arr.sum() / arr.size)**2) / (arr.size - 1))
+    return mean, std
 
 # mu, sig = calculate_statistics(x1)
 
@@ -79,26 +79,11 @@ P_b = lambda b: ellipse_perimeter(5,b)
 
 x = np.arange(1,4.05,0.1)
 P_x = P_b(x)
-dx = P_x[1] - P_x[0]
+db = 0.01
 A14 = P_x.copy()
 
-Pdb = np.zeros(x.size)
-Pdb[:-1] = (P_x[1:] - P_x[:-1]) / (dx)
-Pdb[-1] = (P_x[-1] - P_x[-2]) / dx
-
-A15 = Pdb.copy()
-
-Pdb = np.zeros(x.size)
-Pdb[0] = (P_x[1] - P_x[0]) / dx
-Pdb[1:] = (P_x[1:] - P_x[:-1]) / (dx)
-
-A16 = Pdb.copy()
-
-Pdb = np.zeros(x.size)
-Pdb[0] = (P_x[1] - P_x[0]) / dx
-Pdb[1:-1] = (P_x[2:] - P_x[:-2]) / (2 * dx)
-Pdb[-1] = (P_x[-1] - P_x[-2]) / dx
-
-A17 = Pdb.copy()
+A15 = (P_b(x + db) - P_b(x)) / db
+A16 = (P_b(x) - P_b(x - db)) / db
+A17 = (P_b(x + db) - P_b(x - db)) / (2 * db)
 
 
