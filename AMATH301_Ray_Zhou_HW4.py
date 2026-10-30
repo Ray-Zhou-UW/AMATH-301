@@ -1,5 +1,6 @@
 # AMATH 301 RAY ZHOU
 import numpy as np
+import scipy as scp
 
 # rng = np.random.default_rng(seed=301)
 # x1 = rng.uniform(low=0.0, high=10.0, size=100)
@@ -25,26 +26,55 @@ import numpy as np
 #     zscore = (arr - mean) / std
 #     return zscore
 
-f = lambda x: np.e**(0.5*x) - 2
-fdx = lambda x: 0.5 * np.e**(0.5*x)
+# f = lambda x: np.e**(0.5*x) - 2
+# fdx = lambda x: 0.5 * np.e**(0.5*x)
 
-x = 2.75
-A6 = x - f(x) / fdx(x)
-A7 = A6 - f(A6) / fdx(A6)
+# x = 2.75
+# A6 = x - f(x) / fdx(x)
+# A7 = A6 - f(A6) / fdx(A6)
 
-tol = 1e-8
+# tol = 1e-8
+# for i in range(1000):
+#     x_new = x - f(x) / fdx(x)
+#     if np.abs(x_new - x) < tol:
+#         A8 = x_new 
+#         A9 = i
+#         break
+#     x = x_new
+
+# def newton(f_x,f_xdx,x,tol,max_steps):
+#     for i in range(max_steps):
+#         x_new = x - f_x(x) / f_xdx(x)
+#         if np.abs(x_new - x) < tol:
+#             return x_new
+#         x = x_new
+#     return x_new
+
+def ellipse_perimeter(a, b):
+    # The perimeter of an ellipse is P = 4aE(e^2), where e is the
+    # eccentricity defined by e^2 = 1 - (b / a)^2.
+    e = np.sqrt(1 - (b / a) ** 2)
+    P = 4 * a * scp.special.ellipe(e ** 2)
+    return P
+
+A10 = ellipse_perimeter(5,1)
+
+P_b = lambda b: ellipse_perimeter(5,b)
+
+A11 = P_b(4)
+
+a = 1
+b = 4
+tol =  1e-9
 for i in range(1000):
-    x_new = x - f(x) / fdx(x)
-    if np.abs(x_new - x) < tol:
-        A8 = x_new 
-        A9 = i
+    x = (a + b) / 2
+    if np.abs(P_b(x) - 25) < tol:
+        A12 = x
+        A13 = i
         break
-    x = x_new
+    if np.sign(P_b(x) - 25) == np.sign(P_b(a) - 25):
+        a = x
+    else:
+        b = x
 
-def newton(f_x,f_xdx,x,tol,max_steps):
-    for i in range(max_steps):
-        x_new = x - f_x(x) / f_xdx(x)
-        if np.abs(x_new - x) < tol:
-            return x_new
-        x = x_new
-    return x_new
+A14 = P_b(np.arrange(1,4.05,0.1))
