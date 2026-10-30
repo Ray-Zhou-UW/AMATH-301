@@ -28,6 +28,19 @@ import numpy as np
 f = lambda x: np.e**(0.5*x) - 2
 fdx = lambda x: 0.5 * np.e**(0.5*x)
 
+x = 2.75
+A6 = x - f(x) / fdx(x)
+A7 = A6 - f(A6) / fdx(A6)
+
+tol = 1e-8
+for i in range(1000):
+    x_new = x - f(x) / fdx(x)
+    if np.abs(x_new - x) < tol:
+        A8 = x_new 
+        A9 = i
+        break
+    x = x_new
+
 def newton(f_x,f_xdx,x,tol,max_steps):
     for i in range(max_steps):
         x_new = x - f_x(x) / f_xdx(x)
@@ -35,17 +48,3 @@ def newton(f_x,f_xdx,x,tol,max_steps):
             return x_new
         x = x_new
     return x_new
-
-x_0 = 2.75
-A6 = x_0 - f(x_0) / fdx(x_0)
-A7 = A6 - f(A6) / fdx(A6)
-
-tol = 1e-8
-for i in range(1000):
-    x_new = x - fx(x) / fdx(x)
-    if np.abs(x_new - x) < tol:
-        A8 = x_new 
-        A9 = i
-        break
-    x = x_new
-
