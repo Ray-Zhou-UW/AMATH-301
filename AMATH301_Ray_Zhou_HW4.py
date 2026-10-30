@@ -57,24 +57,48 @@ def ellipse_perimeter(a, b):
     P = 4 * a * scp.special.ellipe(e ** 2)
     return P
 
-A10 = ellipse_perimeter(5,1)
+# A10 = ellipse_perimeter(5,1)
 
 P_b = lambda b: ellipse_perimeter(5,b)
 
-A11 = P_b(4)
+# A11 = P_b(4)
 
-a = 1
-b = 4
-tol =  1e-9
-for i in range(1000):
-    x = (a + b) / 2
-    if np.abs(P_b(x) - 25) < tol:
-        A12 = x
-        A13 = i
-        break
-    if np.sign(P_b(x) - 25) == np.sign(P_b(a) - 25):
-        a = x
-    else:
-        b = x
+# a = 1
+# b = 4
+# tol =  1e-9
+# for i in range(1000):
+#     x = (a + b) / 2
+#     if np.abs(P_b(x) - 25) < tol:
+#         A12 = x
+#         A13 = i
+#         break
+#     if np.sign(P_b(x) - 25) == np.sign(P_b(a) - 25):
+#         a = x
+#     else:
+#         b = x
 
-A14 = P_b(np.arange(1,4.05,0.1))
+x = np.arange(1,4.05,0.1)
+P_x = P_b(x)
+dx = P_x[1] - P_x[0]
+A14 = P_x.copy()
+
+Pdb = np.zeros(x.size)
+Pdb[:-1] = (P_x[1:] - P_x[:-1]) / (dx)
+Pdb[-1] = (P_x[-1] - P_x[-2]) / dx
+
+A15 = Pdb.copy()
+
+Pdb = np.zeros(x.size)
+Pdb[0] = (P_x[1] - P_x[0]) / dx
+Pdb[1:] = (P_x[1:] - P_x[:-1]) / (dx)
+
+A16 = Pdb.copy()
+
+Pdb = np.zeros(x.size)
+Pdb[0] = (P_x[1] - P_x[0]) / dx
+Pdb[1:-1] = (P_x[2:] - P_x[:-2]) / (2 * dx)
+Pdb[-1] = (P_x[-1] - P_x[-2]) / dx
+
+A17 = Pdb.copy()
+
+
