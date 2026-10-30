@@ -9,20 +9,20 @@ A1 = x1.copy()
 A2 = x2.copy()
 
 A3 = x1.mean()
-A4 = x1.std()
+A4 = np.sqrt(np.sum((x1 - x1.sum() / x1.size)**2) / (x1.size - 1))
 
 z = (x2 - A3) / A4
 A5 = z.copy()
 
-def calculate_statistics(arr):
-    mean = arr.mean()
-    std = arr.std()
-    return mean, std
+# def calculate_statistics(arr):
+#     mean = arr.mean()
+#     std = arr.std()
+#     return mean, std
 
-mu, sig = calculate_statistics(x1)
+# mu, sig = calculate_statistics(x1)
 
-def standardize_data(arr,mean,std):
-    zscore = (arr - mean) / std
-    return zscore
+# def standardize_data(arr,mean,std):
+#     zscore = (arr - mean) / std
+#     return zscore
 
 
