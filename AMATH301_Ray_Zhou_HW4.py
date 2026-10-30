@@ -77,4 +77,4 @@ for i in range(1000):
     else:
         b = x
 
-A14 = P_b(np.arrange(1,4.05,0.1))
+A14 = P_b(np.arange(1,4.05,0.1))
