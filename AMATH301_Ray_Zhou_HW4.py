@@ -61,29 +61,29 @@ def ellipse_perimeter(a, b):
 
 P_b = lambda b: ellipse_perimeter(5,b)
 
-# A11 = P_b(4)
+A11 = P_b(4)
 
-# a = 1
-# b = 4
-# tol =  1e-9
-# for i in range(1000):
-#     x = (a + b) / 2
-#     if np.abs(P_b(x) - 25) < tol:
-#         A12 = x
-#         A13 = i
-#         break
-#     if np.sign(P_b(x) - 25) == np.sign(P_b(a) - 25):
-#         a = x
-#     else:
-#         b = x
+a = 1
+b = 4
+tol =  1e-9
+for i in range(1000):
+    x = (a + b) / 2
+    if np.abs(P_b(x) - 25) < tol:
+        # A12 = x
+        A13 = i + 1
+        break
+    if np.sign(P_b(x) - 25) == np.sign(P_b(a) - 25):
+        a = x
+    else:
+        b = x
 
-x = np.arange(1,4.05,0.1)
-P_x = P_b(x)
-db = 0.01
-A14 = P_x.copy()
+# x = np.arange(1,4.05,0.1)
+# P_x = P_b(x)
+# db = 0.01
+# A14 = P_x.copy()
 
-A15 = (P_b(x + db) - P_b(x)) / db
-A16 = (P_b(x) - P_b(x - db)) / db
-A17 = (P_b(x + db) - P_b(x - db)) / (2 * db)
+# A15 = (P_b(x + db) - P_b(x)) / db
+# A16 = (P_b(x) - P_b(x - db)) / db
+# A17 = (P_b(x + db) - P_b(x - db)) / (2 * db)
 
 
