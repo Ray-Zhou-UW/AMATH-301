@@ -15,10 +15,10 @@ import scipy as scp
 # z = (x2 - A3) / A4
 # A5 = z.copy()
 
-def calculate_statistics(arr):
-    mean = arr.mean()
-    std = np.sqrt(np.sum((arr - arr.sum() / arr.size)**2) / (arr.size - 1))
-    return mean, std
+# def calculate_statistics(arr):
+#     mean = arr.mean()
+#     std = np.sqrt(np.sum((arr - arr.sum() / arr.size)**2) / (arr.size - 1))
+#     return mean, std
 
 # mu, sig = calculate_statistics(x1)
 
@@ -50,32 +50,32 @@ def calculate_statistics(arr):
 #         x = x_new
 #     return x_new
 
-def ellipse_perimeter(a, b):
-    # The perimeter of an ellipse is P = 4aE(e^2), where e is the
-    # eccentricity defined by e^2 = 1 - (b / a)^2.
-    e = np.sqrt(1 - (b / a) ** 2)
-    P = 4 * a * scp.special.ellipe(e ** 2)
-    return P
+# def ellipse_perimeter(a, b):
+#     # The perimeter of an ellipse is P = 4aE(e^2), where e is the
+#     # eccentricity defined by e^2 = 1 - (b / a)^2.
+#     e = np.sqrt(1 - (b / a) ** 2)
+#     P = 4 * a * scp.special.ellipe(e ** 2)
+#     return P
 
 # A10 = ellipse_perimeter(5,1)
 
-P_b = lambda b: ellipse_perimeter(5,b)
+# P_b = lambda b: ellipse_perimeter(5,b)
 
-A11 = P_b(4)
+# A11 = P_b(4)
 
-a = 1
-b = 4
-tol =  1e-9
-for i in range(1000):
-    x = (a + b) / 2
-    if np.abs(P_b(x) - 25) < tol:
-        # A12 = x
-        A13 = i + 1
-        break
-    if np.sign(P_b(x) - 25) == np.sign(P_b(a) - 25):
-        a = x
-    else:
-        b = x
+# a = 1
+# b = 4
+# tol =  1e-9
+# for i in range(1000):
+#     x = (a + b) / 2
+#     if np.abs(P_b(x) - 25) < tol:
+#         # A12 = x
+#         A13 = i + 1
+#         break
+#     if np.sign(P_b(x) - 25) == np.sign(P_b(a) - 25):
+#         a = x
+#     else:
+#         b = x
 
 # x = np.arange(1,4.05,0.1)
 # P_x = P_b(x)
